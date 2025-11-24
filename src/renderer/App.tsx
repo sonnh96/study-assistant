@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 import '@mantine/core/styles.css';
 import '@mantine/notifications/styles.css';
@@ -14,10 +14,6 @@ const theme = createTheme({
 });
 
 export default function App() {
-  useEffect(() => {
-    window.electron.llm.initialise();
-  }, []);
-
   return (
     <MantineProvider theme={theme}>
       <Notifications position="top-right" />

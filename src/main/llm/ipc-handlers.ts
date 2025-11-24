@@ -16,11 +16,11 @@ const handleError = (error: unknown): string => {
 };
 
 export default function setupLLMIPCHandlers() {
-  ipcMain.handle(LLM_EVENTS.INIT, async (event) => {
+  ipcMain.handle(LLM_EVENTS.INIT, async (event, host?: string) => {
     try {
       await LLMService.init((progress) => {
         event.sender.send(LLM_EVENTS.INITIALISATION_PROGRESS, progress);
-      });
+      }, host);
       return { success: true };
     } catch (error) {
       return { success: false, error: handleError(error) };

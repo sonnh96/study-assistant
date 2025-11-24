@@ -31,8 +31,8 @@ const electronHandler = {
     },
   },
   llm: {
-    initialise: () => {
-      return ipcRenderer.invoke(LLM_EVENTS.INIT);
+    initialise: (host?: string) => {
+      return ipcRenderer.invoke(LLM_EVENTS.INIT, host);
     },
 
     onInitialisationProgress: (
